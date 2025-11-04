@@ -62,15 +62,15 @@ app.use(errorHandler);
 // Start cron job for scraping
 scheduler.startJobScraping();
 
-// Start server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    logger.info(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
-    console.log(`🚀 Server is running on http://localhost:${PORT}`);
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+  console.log("Running on", port);
 });
+
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err) => {
     logger.error(`Unhandled Rejection: ${err.message}`);
     process.exit(1);
+
 });
